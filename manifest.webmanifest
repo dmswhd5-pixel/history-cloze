@@ -1,0 +1,17 @@
+{
+  "name": "한능검 빈칸 훈련",
+  "short_name": "한능검빈칸",
+  "description": "한국사능력검정시험 심화 최근 10회 기출로 만든 빈칸 · O/X 훈련",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6F3EE",
+  "theme_color": "#6E3426",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
