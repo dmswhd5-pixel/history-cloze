@@ -216,7 +216,7 @@ button.pr-btn{color:var(--pr);border-color:var(--pr)}
   <header class="top">
     <div>
       <h1>한능검 빈칸 훈련</h1>
-      <p class="lede">한국사능력검정시험 심화 최근 10회(제71~80회) 기출의 선지와 자료에서, 출제자가 바꿔치기하는 자리만 가립니다.</p>
+      <p class="lede">한국사능력검정시험 심화 최근 20회(제61~80회) 기출의 선지와 자료에서, 출제자가 바꿔치기하는 자리만 가립니다.</p>
     </div>
     <div class="save" id="save"><span class="dot"></span><span>기록 저장 위치 확인 중</span></div>
   </header>
@@ -1010,7 +1010,7 @@ function freqLegend() {
 function freqPanelHTML() {
   if (!allLoaded()) return "";
   const all = freqCards(), n3 = all.filter(x => x.n >= 3).length, n2 = all.filter(x => x.n === 2).length;
-  return '<div class="panel fq-panel"><div class="daily-top"><div><h3>여러 번 출제된 카드</h3><p class="note" style="margin:4px 0 0">최근 10회(제71~80회) 심화 기출 중 같은 정답이 2번 이상 나온 카드 ' + all.length + "장 · 학습 화면에서도 색깔로 표시됩니다.</p></div>" + freqLegend() + "</div>" +
+  return '<div class="panel fq-panel"><div class="daily-top"><div><h3>여러 번 출제된 카드</h3><p class="note" style="margin:4px 0 0">최근 20회(제61~80회) 심화 기출 중 같은 정답이 2번 이상 나온 카드 ' + all.length + "장 · 학습 화면에서도 색깔로 표시됩니다.</p></div>" + freqLegend() + "</div>" +
     '<div class="actions" style="margin-top:10px"><button class="primary" data-fq="">모아 보기 (' + all.length + ')</button><button data-fq="3"' + (n3 ? "" : " disabled") + ">3회 이상 (" + n3 + ')</button><button data-fq="2"' + (n2 ? "" : " disabled") + ">2회 (" + n2 + ")</button></div></div>";
 }
 function startFreq(filter) {
@@ -1027,7 +1027,7 @@ function renderFreq(filter) {
   list.forEach(x => (bySub[x.sid] = bySub[x.sid] || []).push(x));
   view.innerHTML = '<div style="display:flex;flex-direction:column;gap:14px;max-width:960px">' +
     '<div><button class="back" data-home>← 처음 화면</button><h2 style="margin-top:6px">여러 번 출제된 카드</h2>' +
-    '<p class="lede">최근 10회 기출에서 같은 단원 · 같은 정답이 서로 다른 회차에 2번 이상 나온 카드입니다. 색깔이 진할수록 자주 나왔습니다. 배지에 마우스를 올리면 출제된 시험이 보입니다.</p></div>' +
+    '<p class="lede">최근 20회 기출에서 같은 단원 · 같은 정답이 서로 다른 회차에 2번 이상 나온 카드입니다. 색깔이 진할수록 자주 나왔습니다. 배지에 마우스를 올리면 출제된 시험이 보입니다.</p></div>' +
     '<div class="daily-top">' + '<div class="actions">' + tabs.map(([f, nm, n]) => '<button class="' + (f === filter ? "tab on" : "tab") + '" data-tab="' + f + '"' + (n ? "" : " disabled") + ">" + nm + " " + n + "</button>").join("") + "</div>" + freqLegend() + "</div>" +
     '<div class="actions"><button class="primary" data-go' + (list.length ? "" : " disabled") + ">이 카드들 섞어서 풀기 (" + list.length + "장)</button></div>" +
     readySubjects().filter(s => bySub[s.id]).map(s => '<div class="panel"><h3>' + esc(s.name) + ' <span class="note" style="font-weight:400">' + bySub[s.id].length + "장</span></h3>" +

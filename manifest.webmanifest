@@ -1,7 +1,7 @@
 {
   "name": "한능검 빈칸 훈련",
   "short_name": "한능검빈칸",
-  "description": "한국사능력검정시험 심화 최근 10회 기출로 만든 빈칸 · O/X 훈련",
+  "description": "한국사능력검정시험 심화 최근 20회 기출로 만든 빈칸 · O/X 훈련",
   "lang": "ko",
   "start_url": "./",
   "scope": "./",

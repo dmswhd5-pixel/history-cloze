@@ -1,6 +1,6 @@
 // 한능검 빈칸 훈련 · 오프라인 저장 장치
 // 앱 파일은 휴대폰에 저장해 두고, 인터넷이 되면 최신 파일로 바꿔 둔다(네트워크 우선, 실패 시 저장본).
-const VERSION = "hancloze-v1";
+const VERSION = "hancloze-v2";
 const CORE = [
   "./", "index.html", "manifest.webmanifest",
   "data/subjects.js", "data/pairs.js", "data/glossary.js", "data/seonsa.js", "data/samguk.js", "data/nambuk.js", "data/goryeo.js", "data/joseon1.js", "data/joseon2.js", "data/modern.js", "data/ilje.js", "data/hyeondae.js", "data/theme.js",
