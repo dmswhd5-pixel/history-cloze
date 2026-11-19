@@ -373,7 +373,7 @@ function stats(id) {
 
 /* ---------- 화면: 시대 고르기 ---------- */
 function renderHome() {
-  let h = '<div style="display:flex;flex-direction:column;gap:14px"><div><h2>시대</h2><p class="lede">시대를 고르면 단원 목차와 내 약점이 나옵니다. 카드 하나가 기출 한 문항이고, 같은 내용이 여러 회차에 나오면 색으로 표시됩니다.</p></div><div class="subjects">';
+  let h = '<div style="display:flex;flex-direction:column;gap:14px"><div><h2>시대</h2><p class="lede">시대를 고르면 단원 목차와 내 약점이 나옵니다. 카드 하나가 기출 정답 하나이고, 같은 정답이 여러 회차에 나오면 한 장으로 합쳐 색으로 표시됩니다.</p></div><div class="subjects">';
   S.subjects.forEach(s => {
     if (!s.ready) {
       h += '<button class="subj" disabled><span class="chip soon">준비 중</span><span class="nm">' + esc(s.name) + '</span><span class="ds">' + esc(s.desc) + "</span></button>";
@@ -510,6 +510,7 @@ function exHTML(c) {
   if (e.k === "O") h += '<div class="exf">시험지 핵심 단어: <b style="color:var(--ok)">' + esc(e.w) + "</b></div>";
   if (e.k === "X") h += '<div class="exf">이 시기 · 대상과 맞지 않는 부분: <b style="color:var(--bad)">' + esc(e.w) + "</b>" + (e.note ? "<br>" + esc(e.note) : "") + "</div>";
   if (e.k === "L") h += '<div class="exf">자료 속 단서: <b style="color:var(--warn)">' + esc(e.w) + "</b> → 정답 <b style=\"color:var(--ok)\">" + esc(c.b) + "</b></div>";
+  if (e.more && e.more.length) h += '<div class="exf">같은 정답으로 함께 나온 문항: ' + esc(e.more.join(" · ")) + "</div>";
   return h + "</div>";
 }
 function resultHTML(c, v, j) {
