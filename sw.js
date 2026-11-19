@@ -1,13 +1,13 @@
 // 한능검 빈칸 훈련 · 오프라인 저장 장치
 // 앱 파일은 휴대폰에 저장해 두고, 인터넷이 되면 최신 파일로 바꿔 둔다(네트워크 우선, 실패 시 저장본).
-const VERSION = "hancloze-v3";
+const VERSION = "hancloze-v4";
 const CORE = [
   "./", "index.html", "manifest.webmanifest",
   "data/subjects.js", "data/pairs.js", "data/glossary.js", "data/seonsa.js", "data/samguk.js", "data/nambuk.js", "data/goryeo.js", "data/joseon1.js", "data/joseon2.js", "data/modern.js", "data/ilje.js", "data/hyeondae.js", "data/theme.js",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-64.png"
 ];
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE.map(u => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== VERSION && k.startsWith("hancloze-")).map(k => caches.delete(k)))).then(() => self.clients.claim()));
@@ -30,7 +30,7 @@ self.addEventListener("fetch", e => {
   e.respondWith((async () => {
     const c = await caches.open(VERSION);
     try {
-      const res = await Promise.race([fetch(req), timeout(4000)]);
+      const res = await Promise.race([fetch(req, { cache: "no-cache" }), timeout(4000)]);
       if (res && res.ok) c.put(req, res.clone());
       return res;
     } catch (err) {
